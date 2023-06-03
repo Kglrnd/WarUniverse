@@ -21,7 +21,5 @@ public class PlayerController {
     public List<Player> getPlayers() {
         return playerRepository.findAll();
     }
- 
-    // other controller methods
 
 }

@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,9 +19,13 @@ public class Player {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
+	@Column
     private String playerId;
+	@Column
     private String playerName;
-    //private List<Planet> planets;
+    @OneToMany
+    @JoinColumn(name="planet_id")
+    private List<Planet> planets;
    // private Research research;
    // private Score score;
     
@@ -27,7 +34,7 @@ public class Player {
     public Player(String playerId, String playerName) {
         this.playerId = playerId;
         this.playerName = playerName;
-        //this.planets = new ArrayList<>();
+        this.planets = new ArrayList<>();
 //        this.research = new Research(); // Initialisierung der Forschung
 //        this.score = new Score(playerId);
     }
@@ -35,7 +42,7 @@ public class Player {
     public Player(String playerId, String playerName, List<Planet> planets, Research research, Score score) {
         this.playerId = playerId;
         this.playerName = playerName;
-       // this.planets = planets;
+        this.planets = planets;
 //        this.research = new Research(); // Initialisierung der Forschung
 //        this.score = score;
     }
@@ -58,13 +65,13 @@ public class Player {
         this.playerName = playerName;
     }
 
-//	public List<Planet> getPlanets() {
-//		return planets;
-//	}
+	public List<Planet> getPlanets() {
+		return planets;
+	}
 
-//    public void setPlanets(List<Planet> planets) {
-//        this.planets = planets;
-//    }
+    public void setPlanets(List<Planet> planets) {
+        this.planets = planets;
+    }
 
 //    public Research getResearch() {
 //        return research;
