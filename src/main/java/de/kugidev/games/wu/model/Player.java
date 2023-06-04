@@ -20,42 +20,20 @@ public class Player {
 	@Id
 	private Long id;
 	@Column
-    private String playerId;
-	@Column
     private String playerName;
     @OneToMany
     @JoinColumn(name="planet_id")
     private List<Planet> planets;
    // private Research research;
    // private Score score;
-    
-    public Player() {};
 
-    public Player(String playerId, String playerName) {
-        this.playerId = playerId;
+    public Player(String playerName) {
         this.playerName = playerName;
         this.planets = new ArrayList<>();
 //        this.research = new Research(); // Initialisierung der Forschung
 //        this.score = new Score(playerId);
     }
     
-    public Player(String playerId, String playerName, List<Planet> planets, Research research, Score score) {
-        this.playerId = playerId;
-        this.playerName = playerName;
-        this.planets = planets;
-//        this.research = new Research(); // Initialisierung der Forschung
-//        this.score = score;
-    }
-
-    // Getter und Setter für die Attribute
-
-    public String getPlayerId() {
-        return playerId;
-    }
-
-    public void setPlayerId(String playerId) {
-        this.playerId = playerId;
-    }
 
     public String getPlayerName() {
         return playerName;
@@ -73,42 +51,11 @@ public class Player {
         this.planets = planets;
     }
 
-//    public Research getResearch() {
-//        return research;
-//    }
-//
-//    public void setResearch(Research research) {
-//        this.research = research;
-//    }
-//
-//	public Score getScore() {
-//		return this.score;
-//	}
-
-//	public void increaseDestroyedPlanetsScore(int i) {
-//		this.score.increaseDestroyedPlanetsScore(i);
-//		
-//	}
-//	
-//	public void increasePlayerScore(int i) {
-//		this.score.increasePlayerScore(i);
-//	}
-//	
-//	public void increaseAttackPointsScore(int i) {
-//		this.score.increaseAttackPointsScore(i);
-//	}
-//	
-//	public void increaseDefensePointsScore(int i) {
-//		this.score.increaseDefensePointsScore(i);
-//	}
-
-//	/**
-//	 * Setzt alle Scores zurück
-//	 */
-//	public void resetScore() {
-//		this.score = new Score(this.playerId);
-//		
-//	}
-
-    // Weitere Methoden für die Spielerklasse (z.B., um Planeten hinzuzufügen/entfernen, Forschungsgeschwindigkeit zu ändern, etc.)
+	public long getId() {
+		return id;
+	}
+	
+	static protected Player getPlayerZero() {
+		return new Player("PlayerZero");
+	}
 }

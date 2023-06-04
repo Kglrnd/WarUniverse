@@ -3,22 +3,29 @@ package de.kugidev.games.wu.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-//@Entity
-//@Table(name = "research")
+@Entity
+@Table(name = "research")
 public class Research {
 	
-	//@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column
     private int researchSpeed;
+	
+	@ElementCollection
+	@CollectionTable(name = "planet_resources")
     private Map<String, Integer> researchLevels;
-    // Weitere Attribute je nach Anforderungen des Spiels
 
     public Research() {
         this.researchSpeed = 1; // Standard-Forschungsgeschwindigkeit
@@ -55,4 +62,11 @@ public class Research {
     public int getResearchLevel(String category) {
         return researchLevels.getOrDefault(category, 0);
     }
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
 }

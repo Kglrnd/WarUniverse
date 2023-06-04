@@ -1,6 +1,6 @@
-package de.kugidev.games.wu.model;
+package de.kugidev.games.wu.model.enums;
 
-public enum Resource {
+public enum ResourceEnum {
     IRON("Iron"),
     GOLD("Gold"),
     URANIUM("Uranium"),
@@ -10,7 +10,7 @@ public enum Resource {
 
     private final String displayName;
 
-    Resource(String displayName) {
+    ResourceEnum(String displayName) {
         this.displayName = displayName;
     }
 

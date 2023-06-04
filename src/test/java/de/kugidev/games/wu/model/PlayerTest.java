@@ -1,10 +1,6 @@
 package de.kugidev.games.wu.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertAll;
-
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
 
@@ -12,7 +8,7 @@ public class PlayerTest {
 
     @BeforeAll
     public static void setup() {
-        player = new Player("1", "PlayerOne");
+        player = new Player("PlayerOne");
     }
 
 //    @Test
